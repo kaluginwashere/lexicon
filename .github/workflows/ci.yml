@@ -5,7 +5,9 @@ jobs:
 
   tests:
     runs-on: ubuntu-latest
-    working-directory: ./lexicon
+    defaults:
+      run:
+        working-directory: ./lexicon
     steps:
     - uses: actions/checkout@v3
     - uses: actions/setup-node@v3
@@ -17,7 +19,9 @@ jobs:
   build:
     needs: tests
     runs-on: ubuntu-latest
-    working-directory: ./lexicon
+    defaults:
+      run:
+        working-directory: ./lexicon
     if: github.ref == 'refs/heads/master'
     steps:
     - uses: actions/checkout@v3
