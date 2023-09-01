@@ -21,6 +21,23 @@ function App() {
     }
   }
 
+  function shuffleArray(array) {
+    // Копируем исходный массив, чтобы не изменять его напрямую
+    const newArray = [...array]
+
+    for (let i = newArray.length - 1; i > 0; i--) {
+      // Генерируем случайный индекс от 0 до i
+      const j = Math.floor(Math.random() * (i + 1))
+
+      // Меняем местами элементы с индексами i и j
+      ;[newArray[i], newArray[j]] = [newArray[j], newArray[i]]
+    }
+
+    return newArray
+  }
+
+  // Пример использования
+  const shuffledArray = shuffleArray(words)
   return (
     <div className="app">
       <div className="container main-block ">
@@ -34,13 +51,13 @@ function App() {
         <Row>
           <div className="question-section d-flex justify-content-center flex-column align-items-center">
             <div className="question-count">
-              <span>Вопрос {currentQuestion + 1}</span>/{words.length}
+              <span>Вопрос {currentQuestion + 1}</span>/{shuffledArray.length}
             </div>
             <div>
               <h3>знаете это слово?</h3>
             </div>
             <div className="question-text">
-              <h2>{words[currentQuestion]}</h2>
+              <h2>{shuffledArray[currentQuestion]}</h2>
             </div>
           </div>
         </Row>
