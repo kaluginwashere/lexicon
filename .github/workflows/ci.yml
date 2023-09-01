@@ -19,13 +19,17 @@ jobs:
 
   build:
     # needs: tests
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     defaults:
       run:
         working-directory: ./lexicon
-    if: github.ref == 'refs/heads/master'
+    env:
+      CI: false
     steps:
-    - uses: actions/checkout@v3
-    - uses: actions/setup-node@v3
-    - run: npm install
-    - run: npm run build
+      - uses: actions/checkout@v3
+      - run: npm install
+      - run: npm build
+      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
