@@ -44,17 +44,17 @@ function App() {
         <Row>
           <Col>
             <div className="score-section d-flex justify-content-center">
-              Вы набрали {score} из {words.length} баллов!
+              You scored {score} из {words.length} points!
             </div>
           </Col>
         </Row>
         <Row>
           <div className="question-section d-flex justify-content-center flex-column align-items-center">
             <div className="question-count">
-              <span>Вопрос {currentQuestion + 1}</span>/{shuffledArray.length}
+              <span>Question {currentQuestion + 1}</span>/{shuffledArray.length}
             </div>
             <div>
-              <h3>знаете это слово?</h3>
+              <h3>Do you know this word?</h3>
             </div>
             <div className="question-text">
               <h2>{shuffledArray[currentQuestion]}</h2>
@@ -64,23 +64,35 @@ function App() {
         <Row>
           <Col className="d-grid gap-3 col-2 mx-auto">
             <Button
-              onClick={() => handleAnswerButtonClick(1)}
-              variant="primary"
+              onClick={() => handleAnswerButtonClick(2)}
+              variant="outline-success"
               size="lg"
             >
               know
             </Button>
-            <Button onClick={() => handleAnswerButtonClick(32)}>
+            <Button
+              onClick={() => handleAnswerButtonClick(1)}
+              size="lg"
+              variant="outline-success"
+            >
               {' '}
-              hear somwhere
+              hear somewhere
             </Button>
-            <Button onClick={() => handleAnswerButtonClick(35)}>
+            <Button
+              onClick={() => handleAnswerButtonClick(0.5)}
+              size="lg"
+              variant="outline-success"
+            >
               {' '}
               need context
             </Button>
-            <Button onClick={() => handleAnswerButtonClick(43)}>
+            <Button
+              onClick={() => handleAnswerButtonClick(0)}
+              size="lg"
+              variant="outline-success"
+            >
               {' '}
-              не знаю
+              dont know
             </Button>
           </Col>
         </Row>
