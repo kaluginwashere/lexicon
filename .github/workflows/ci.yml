@@ -42,5 +42,5 @@ jobs:
       - run: npm run build
       - uses: actions/upload-pages-artifact@v2
         with:
-          path: "./"
+          path: "./lexicon/build"
       - uses: actions/deploy-pages@v2
