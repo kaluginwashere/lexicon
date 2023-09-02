@@ -27,7 +27,7 @@ jobs:
       CI: false
     environment:
       name: github-pages
-      url: https://github.com/kaluginwashere/lexicon
+      url: ${{steps.deployment.outputs.page_url}}
     permissions:
       contents: read
       pages: write
