@@ -25,7 +25,6 @@ jobs:
     env:
       CI: false
       github_token: ${{ secrets.GITHUB_TOKEN }}
-      PUBLIC_URL: https://kaluginwashere.github.io/lexicon
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
