@@ -44,4 +44,5 @@ jobs:
       - uses: actions/upload-pages-artifact@v2
         with:
           path: "./lexicon/build"
-      - uses: actions/deploy-pages@v2
+      - id: deployment
+        uses: actions/deploy-pages@v2
