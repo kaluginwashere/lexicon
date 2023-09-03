@@ -2,7 +2,22 @@ name: build
 on: [push, pull_request]
 
 jobs:
+  # TODO: add tests
+  # tests:
+  #   runs-on: ubuntu-latest
+  #   defaults:
+  #     run:
+  #       working-directory: ./lexicon
+  #   steps:
+  #   - uses: actions/checkout@v3
+  #   - uses: actions/setup-node@v3
+  #     with:
+  #       node-version: 18
+  #   - run: npm ci
+  #   - run: npm test
+
   deploy:
+    # needs: tests
     runs-on: ubuntu-22.04
     defaults:
       run:
@@ -29,12 +44,4 @@ jobs:
         with:
           path: './lexicon/build'
       - id: deployment
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          artifact_name: lexicon-pages # Имя артефакта
-          publish_dir: ./lexicon/build # Путь к сборке вашего приложения
-          force_orphan: true
-          allow_empty_commit: true
-          keep_files: true
-          clean: false
-          target_commitish: ${{ github.sha }}
+        uses: actions/deploy-pages@v2
