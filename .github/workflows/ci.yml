@@ -43,7 +43,7 @@ jobs:
       - uses: actions/upload-pages-artifact@v2
         with:
           path: './lexicon/build'
-      - id: deployment
+- id: deployment
   with:
     github_token: ${{ secrets.GITHUB_TOKEN }}
     artifact_name: lexicon-pages # Имя артефакта
