@@ -20,6 +20,7 @@ function App() {
       setShowScore(true)
     }
   }
+  console.log(showScore)
 
   const handleReset = () => {
     setCurrentQuestion(0)
