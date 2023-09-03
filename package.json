@@ -2,7 +2,7 @@
   "name": "lexicon",
   "version": "0.1.0",
   "private": true,
-  "homepage": "/lexicon/",
+  "homepage": "https://kaluginwashere.github.io/lexicon",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
