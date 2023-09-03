@@ -44,5 +44,14 @@ jobs:
         with:
           path: './lexicon/build'
       - id: deployment
-        uses: actions/deploy-pages@v2
-        PUBLIC_URL: https://kaluginwashere.github.io/lexicon # Добавьте это
+  uses: actions/deploy-pages@v2
+  with:
+    github_token: ${{ secrets.GITHUB_TOKEN }}
+    artifact_name: lexicon-pages
+    publish_dir: ./lexicon/build
+    force_orphan: true
+    allow_empty_commit: true
+    keep_files: true
+    clean: false
+    target_commitish: ${{ github.sha }}
+    PUBLIC_URL: https://kaluginwashere.github.io/lexicon # Добавьте это
