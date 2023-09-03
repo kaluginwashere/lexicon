@@ -44,4 +44,13 @@ jobs:
         with:
           path: './lexicon/build'
       - id: deployment
-        uses: actions/deploy-pages@v2
+  uses: actions/deploy-pages@v2
+  with:
+    github_token: ${{ secrets.GITHUB_TOKEN }}
+    artifact_name: lexicon-pages # Имя артефакта
+    publish_dir: ./lexicon/build # Путь к сборке вашего приложения
+    force_orphan: true
+    allow_empty_commit: true
+    keep_files: true
+    clean: false
+    target_commitish: ${{ github.sha }}
