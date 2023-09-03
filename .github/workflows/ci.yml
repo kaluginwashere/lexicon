@@ -21,18 +21,31 @@ jobs:
       group: 'pages'
       cancel-in-progress: false
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/configure-pages@v3
-      - run: npm install
-      - run: npm run build
-      - uses: actions/upload-pages-artifact@v2
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v4
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build Application
+        run: npm run build
+
+      - name: Upload Pages Artifact
+        uses: actions/upload-artifact@v2
         with:
-          path: './lexicon/build'
-      - id: deployment
+          name: lexicon-pages
+          path: ./lexicon/build
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          artifact_name: lexicon-pages # Имя артефакта
-          publish_dir: ./lexicon/build # Путь к сборке вашего приложения
+          artifact_name: lexicon-pages
+          publish_dir: ./lexicon/build
           force_orphan: true
           allow_empty_commit: true
           keep_files: true
