@@ -20,12 +20,6 @@ function App() {
       setShowScore(true)
     }
   }
-  console.log(showScore)
-
-  const handleReset = () => {
-    setCurrentQuestion(0)
-    setScore(0)
-  }
 
   function shuffleArray(array) {
     // Копируем исходный массив, чтобы не изменять его напрямую
@@ -63,18 +57,26 @@ function App() {
               <h3>Do you know this word?</h3>
             </div>
             <div className="question-text">
-              <h1>{shuffledArray[currentQuestion]}</h1>
+              <h2>{shuffledArray[currentQuestion]}</h2>
             </div>
           </div>
         </Row>
         <Row>
-          <Col className="d-grid gap-3 col-12 col-md-6 mx-auto">
+          <Col className="d-grid gap-3 col-2 mx-auto">
             <Button
-              onClick={() => handleAnswerButtonClick(1)}
+              onClick={() => handleAnswerButtonClick(2)}
               variant="outline-success"
               size="lg"
             >
               know
+            </Button>
+            <Button
+              onClick={() => handleAnswerButtonClick(1)}
+              size="lg"
+              variant="outline-success"
+            >
+              {' '}
+              hear somewhere
             </Button>
             <Button
               onClick={() => handleAnswerButtonClick(0.5)}
@@ -82,7 +84,7 @@ function App() {
               variant="outline-success"
             >
               {' '}
-              hear somewhere
+              need context
             </Button>
             <Button
               onClick={() => handleAnswerButtonClick(0)}
@@ -91,18 +93,6 @@ function App() {
             >
               {' '}
               dont know
-            </Button>
-          </Col>
-        </Row>
-        <Row>
-          <Col className="col-3 mt-3">
-            <Button
-              variant="outline-danger"
-              onClick={() => {
-                handleReset()
-              }}
-            >
-              Reset
             </Button>
           </Col>
         </Row>
