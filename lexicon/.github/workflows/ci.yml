@@ -1,0 +1,47 @@
+name: build
+on: [push, pull_request]
+
+jobs:
+  # TODO: add tests
+  # tests:
+  #   runs-on: ubuntu-latest
+  #   defaults:
+  #     run:
+  #       working-directory: ./lexicon
+  #   steps:
+  #   - uses: actions/checkout@v3
+  #   - uses: actions/setup-node@v3
+  #     with:
+  #       node-version: 18
+  #   - run: npm ci
+  #   - run: npm test
+
+  deploy:
+    # needs: tests
+    runs-on: ubuntu-22.04
+    defaults:
+      run:
+        working-directory: ./lexicon
+    env:
+      CI: false
+      github_token: ${{ secrets.GITHUB_TOKEN }}
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    concurrency:
+      group: 'pages'
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/configure-pages@v3
+      - run: npm install
+      - run: npm run build
+      - uses: actions/upload-pages-artifact@v2
+        with:
+          path: './lexicon/build'
+      - id: deployment
+        uses: actions/deploy-pages@v2
