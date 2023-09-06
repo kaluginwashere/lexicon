@@ -1,23 +1,3 @@
-<<<<<<< HEAD
-import React from 'react'
-import { Route, Routes } from 'react-router-dom'
-import MainLayout from './layouts/MainLayout'
-import Start from './pages/Start'
-import Main from './pages/Main'
-
-function App() {
-  return (
-    <Routes>
-      <Route path="/lexicon" element={<MainLayout />}>
-        <Route path="" element={<Main />} />
-        <Route path="*" element={<Start />} />
-      </Route>
-    </Routes>
-  )
-}
-
-export default App
-=======
 import React, { useState } from 'react'
 import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row'
@@ -134,4 +114,3 @@ function Main() {
 }
 
 export default Main
->>>>>>> 32ec8935ae8cef6dda60d820303c49a2a26283c4
