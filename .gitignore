@@ -1,9 +1,8 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/lexcion/build
-/lexcion/node_modules
-/node_modules
+lexcion/build
+lexcion/node_modules
 /.pnp
 .pnp.js
 
