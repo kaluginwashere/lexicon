@@ -1,0 +1,19 @@
+.wrapper {
+  &.dark {
+    background-color: rgb(2, 2, 2);
+    span, h1{
+      color: #fff;
+      }
+  }
+  height: 100vh;
+
+}
+
+.dark{
+  &.my-modal{
+    .modal-content {
+      background-color: rgb(2, 2, 2);
+      color: #fff;
+    }
+  }
+}

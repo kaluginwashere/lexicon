@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 import MainLayout from './layouts/MainLayout'
 import Start from './pages/Start'
 import Main from './pages/Main'
+import './scss/App.scss'
 
 function App() {
   return (

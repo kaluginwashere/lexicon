@@ -1,8 +1,8 @@
 import React from 'react'
 import Header from '../components/Header'
 import { Outlet } from 'react-router-dom'
-import { useSelector } from 'react-redux/es/hooks/useSelector'
-import '../App.css'
+import { useSelector } from 'react-redux'
+
 
 const MainLayout = () => {
   const { theme } = useSelector((state) => state.lookSlice)

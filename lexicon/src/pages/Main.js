@@ -1,12 +1,10 @@
 import React, { useState } from 'react'
-import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import words from '../words/words-2000.json'
 import LModal from '../components/LModal'
-import { useSelector } from 'react-redux/es/hooks/useSelector'
-import { useDispatch } from 'react-redux'
-import { nextQuestion, setPoints } from '../redux/slices/scoreSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import TestButtons from '../components/TestButtons'
 
 function Main() {
   const { score, currentQuestion } = useSelector((state) => state.scoreSlice)
@@ -22,11 +20,6 @@ function Main() {
   // }
   // }
   console.log(showScore)
-  const dispatch = useDispatch()
-  const handleAnswerButtonClick = (points) => {
-    dispatch(setPoints(points))
-    dispatch(nextQuestion())
-  }
 
   function shuffleArray(array) {
     // Копируем исходный массив, чтобы не изменять его напрямую
@@ -73,29 +66,7 @@ function Main() {
         </Row>
         <Row>
           <Col className="d-grid gap-3 col-12 col-md-6 mx-auto">
-            <Button
-              onClick={() => handleAnswerButtonClick(1)}
-              variant="outline-success"
-              size="lg"
-            >
-              know
-            </Button>
-            <Button
-              onClick={() => handleAnswerButtonClick(0.5)}
-              size="lg"
-              variant="outline-success"
-            >
-              {' '}
-              hear somewhere
-            </Button>
-            <Button
-              onClick={() => handleAnswerButtonClick(0)}
-              size="lg"
-              variant="outline-success"
-            >
-              {' '}
-              dont know
-            </Button>
+            <TestButtons />
           </Col>
         </Row>
         <Row>
