@@ -9,5 +9,12 @@ color: #fff;
   color: #fff;
   }
 
+.dark .modal-content {
+  background-color: red;
+}
+
+  .wrapper {
+    height: 100vh;
+  }
 
 

@@ -13,6 +13,7 @@ function LModal() {
 
   const handleReset = () => {
     dispatch(resetTest())
+    setShow(false)
   }
 
   return (
@@ -21,17 +22,17 @@ function LModal() {
         Reset
       </Button>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} >
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Reset test</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
+        <Modal.Body>you really want to start over?</Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
           <Button variant="primary" onClick={handleReset}>
-            reset
+            Reset
           </Button>
         </Modal.Footer>
       </Modal>

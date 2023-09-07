@@ -3,27 +3,29 @@ import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import words from '../words/words-2000.json'
+import LModal from '../components/LModal'
+import { useSelector } from 'react-redux/es/hooks/useSelector'
+import { useDispatch } from 'react-redux'
+import { nextQuestion, setPoints } from '../redux/slices/scoreSlice'
 
 function Main() {
-  const [currentQuestion, setCurrentQuestion] = useState(0)
+  const { score, currentQuestion } = useSelector((state) => state.scoreSlice)
   const [showScore, setShowScore] = useState(false)
-  const [score, setScore] = useState(0)
+  // const handleAnswerButtonClick = (points) => {
+  //   setScore(score + points)
 
-  const handleAnswerButtonClick = (points) => {
-    setScore(score + points)
-
-    const nextQuestion = currentQuestion + 1
-    if (nextQuestion < words.length) {
-      setCurrentQuestion(nextQuestion)
-    } else {
-      setShowScore(true)
-    }
-  }
+  // const nextQuestion = currentQuestion + 1
+  // if (nextQuestion < words.length) {
+  //   setCurrentQuestion(nextQuestion)
+  // } else {
+  //   setShowScore(true)
+  // }
+  // }
   console.log(showScore)
-
-  const handleReset = () => {
-    setCurrentQuestion(0)
-    setScore(0)
+  const dispatch = useDispatch()
+  const handleAnswerButtonClick = (points) => {
+    dispatch(setPoints(points))
+    dispatch(nextQuestion())
   }
 
   function shuffleArray(array) {
@@ -98,14 +100,7 @@ function Main() {
         </Row>
         <Row>
           <Col className="col-3 mt-3">
-            <Button
-              variant="outline-danger"
-              onClick={() => {
-                handleReset()
-              }}
-            >
-              Reset
-            </Button>
+            <LModal />
           </Col>
         </Row>
       </div>
