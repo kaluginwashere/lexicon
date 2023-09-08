@@ -5,39 +5,43 @@ import words from '../words/words-2000.json'
 import LModal from '../components/LModal'
 import { useDispatch, useSelector } from 'react-redux'
 import TestButtons from '../components/TestButtons'
+import { useEffect } from 'react'
+import Button from 'react-bootstrap/esm/Button'
 
 function Main() {
   const { score, currentQuestion } = useSelector((state) => state.scoreSlice)
   const [showScore, setShowScore] = useState(false)
-  // const handleAnswerButtonClick = (points) => {
-  //   setScore(score + points)
+  const [showWords, setShowWords] = useState(false)
+  const [shuffledArray, setShuffledArray] = useState([])
 
-  // const nextQuestion = currentQuestion + 1
-  // if (nextQuestion < words.length) {
-  //   setCurrentQuestion(nextQuestion)
-  // } else {
-  //   setShowScore(true)
-  // }
-  // }
-  console.log(showScore)
+  const handleAnswerButtonClick = (points) => {
+    // Update score here
+    // Update currentQuestion here
+    // Check if the quiz is completed and set setShowScore accordingly
+  }
 
-  function shuffleArray(array) {
-    // Копируем исходный массив, чтобы не изменять его напрямую
-    const newArray = [...array]
+  useEffect(() => {
+    function shuffleArray(array) {
+      const newArray = [...array]
 
-    for (let i = newArray.length - 1; i > 0; i--) {
-      // Генерируем случайный индекс от 0 до i
-      const j = Math.floor(Math.random() * (i + 1))
+      for (let i = newArray.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1))
+        ;[newArray[i], newArray[j]] = [newArray[j], newArray[i]]
+      }
 
-      // Меняем местами элементы с индексами i и j
-      ;[newArray[i], newArray[j]] = [newArray[j], newArray[i]]
+      return newArray
     }
 
-    return newArray
+    // Shuffle words and set the shuffled array in state
+    const shuffled = shuffleArray(words)
+    setShuffledArray(shuffled)
+  }, [])
+
+  const handleButtonClick = () => {
+    setShowWords(!showWords)
   }
 
   // Пример использования
-  const shuffledArray = shuffleArray(words)
 
   return (
     <div className="app">
@@ -73,6 +77,22 @@ function Main() {
           <Col className="col-3 mt-3">
             <LModal />
           </Col>
+        </Row>
+        <Row>
+          <Col className="col-3 mt-3">
+            <Button onClick={() => handleButtonClick()}>Show Words</Button>
+          </Col>
+        </Row>
+        <Row>
+          {showWords && (
+            <div>
+              <ul>
+                {shuffledArray.map((word, index) => (
+                  <li key={index}>{word}</li>
+                ))}
+              </ul>
+            </div>
+          )}
         </Row>
       </div>
     </div>

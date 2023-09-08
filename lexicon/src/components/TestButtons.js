@@ -9,6 +9,7 @@ const TestButtons = () => {
   const handleAnswerButtonClick = (points) => {
     dispatch(setPoints(points))
     dispatch(nextQuestion())
+    
   }
 
   const handleKeyPress = useCallback((event) => {
