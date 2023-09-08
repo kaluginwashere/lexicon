@@ -1,8 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit'
+import words from '../../words/words-2000.json'
+import shuffleArray from '../../utilits/random'
 
 const initialState = {
   score: 0,
-  currentQuestion: 0,
+  currentQuestion: 2023,
+  words: shuffleArray(words),
 }
 
 export const scoreSlice = createSlice({
@@ -20,9 +23,8 @@ export const scoreSlice = createSlice({
       state.currentQuestion += 1
     },
     setPoints: (state, action) => {
-      state.score = state.score + action.payload;
-    }
-
+      state.score = state.score + action.payload
+    },
   },
 })
 
