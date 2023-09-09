@@ -18,6 +18,7 @@ for line in lines:
             words.extend(line_words)
             break
 
+words = list(set(words))
 print(len(words))
 words.sort()
 Path("words-2000.json").write_text(json.dumps(words))
