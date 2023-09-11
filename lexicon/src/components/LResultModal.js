@@ -11,11 +11,13 @@ function LModal() {
   const dispatch = useDispatch()
 
   const { theme } = useSelector((state) => state.lookSlice)
-  const { words, currentQuestion } = useSelector((state) => state.scoreSlice)
+  const { words, currentQuestion, points } = useSelector(
+    (state) => state.scoreSlice
+  )
   const themeColor = `${theme} my-modal`
 
   useEffect(() => {
-    if (currentQuestion+1 === words.length) {
+    if (currentQuestion + 1 === words.length) {
       setShow(true)
     }
     console.log(`show ${show}`)
@@ -26,7 +28,7 @@ function LModal() {
         <Modal.Header closeButton>
           <Modal.Title>Result</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Congratulation you stupid as fuck</Modal.Body>
+        <Modal.Body>Congratulation you complete test your result {points}<br/></Modal.Body>
         <Modal.Footer>
           {theme === 'dark' ? (
             <Button variant="outline-light" onClick={handleClose}>
