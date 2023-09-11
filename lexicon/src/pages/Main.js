@@ -18,6 +18,9 @@ function Main() {
     setShowWords(!showWords)
   }
 
+  const percent = (score / words.length) * 100
+  const roundedPercent = percent.toFixed(1)
+
   // Пример использования
 
   return (
@@ -29,6 +32,13 @@ function Main() {
               <span>
                 Score: {score}/{words.length} points!
               </span>
+            </div>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <div className="score-section d-flex justify-content-center">
+              <span>Percent: {roundedPercent}</span>
             </div>
           </Col>
         </Row>

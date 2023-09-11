@@ -4,7 +4,7 @@ import shuffleArray from '../../utilits/random'
 
 const initialState = {
   score: 0,
-  currentQuestion: 2023,
+  currentQuestion: 0,
   words: shuffleArray(words),
 }
 

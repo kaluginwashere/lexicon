@@ -11,7 +11,7 @@ function LModal() {
   const dispatch = useDispatch()
 
   const { theme } = useSelector((state) => state.lookSlice)
-  const { words, currentQuestion, points } = useSelector(
+  const { words, currentQuestion, points, score } = useSelector(
     (state) => state.scoreSlice
   )
   const themeColor = `${theme} my-modal`
@@ -22,13 +22,28 @@ function LModal() {
     }
     console.log(`show ${show}`)
   }, [currentQuestion])
+
+  const percent = (score / words.length) * 100
+  const roundedPercent = percent.toFixed(1)
+  // const roundedPercent = 92
+
+  let elementToRender
+
+  if (roundedPercent > 90) {
+    elementToRender = <span>This is the first span</span>
+  } else {
+    elementToRender = <span>This is the second span</span>
+  }
   return (
     <>
       <Modal show={show} onHide={handleClose} className={themeColor}>
         <Modal.Header closeButton>
           <Modal.Title>Result</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Congratulation you complete test your result {points}<br/></Modal.Body>
+        <Modal.Body>
+          Congratulation you complete test your result {points}
+          <div>{elementToRender}</div>
+        </Modal.Body>
         <Modal.Footer>
           {theme === 'dark' ? (
             <Button variant="outline-light" onClick={handleClose}>
