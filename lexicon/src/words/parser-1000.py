@@ -9,6 +9,7 @@ for line in lines:
         line_words = [w.lower() for w in line.split(", ")]
         words.extend(line_words)
 
+words = list(set(words))
 print(len(words))
 print(words[0], words[-1])
 words.sort()
