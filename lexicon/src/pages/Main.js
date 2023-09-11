@@ -60,22 +60,6 @@ function Main() {
             <LResultModal />
           </Col>
         </Row>
-        <Row>
-          <Col className="col-3 mt-3">
-            <Button onClick={() => handleButtonClick()}>Show Words</Button>
-          </Col>
-        </Row>
-        <Row>
-          {showWords && (
-            <div>
-              <ul>
-                {words.map((word, index) => (
-                  <li key={index}>{word}</li>
-                ))}
-              </ul>
-            </div>
-          )}
-        </Row>
       </div>
     </div>
   )
