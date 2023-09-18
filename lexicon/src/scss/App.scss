@@ -1,19 +1,8 @@
-.wrapper {
-  &.dark {
-    background-color: rgb(2, 2, 2);
-    span, h1{
-      color: #fff;
-      }
-  }
-  height: 100vh;
-
+[data-bs-theme="dark"] {
+  --bs-body-color: #fff;
+  --bs-body-bg: rgb(2, 2, 2);
 }
 
-.dark{
-  &.my-modal{
-    .modal-content {
-      background-color: rgb(2, 2, 2);
-      color: #fff;
-    }
-  }
+.wrapper {
+  height: 100vh; 
 }
