@@ -2,22 +2,22 @@ import { createSlice } from '@reduxjs/toolkit'
 import words from '../../words/words-2000.json'
 import shuffleArray from '../../utilits/random'
 
-const initialState = {
-  score: 0,
-  currentQuestion: 0,
-  words: shuffleArray(words),
+const getInitialState = () => {
+  return {
+    score: 0,
+    currentQuestion: 0,
+    words: shuffleArray(words),
+  }
 }
+
+const initialState = getInitialState()
 
 export const scoreSlice = createSlice({
   name: 'scoreSlice',
   initialState,
   reducers: {
     resetTest: (state) => {
-      return {
-        ...state,
-        score: 0,
-        currentQuestion: 0,
-      }
+      return getInitialState()
     },
     nextQuestion: (state) => {
       state.currentQuestion += 1
